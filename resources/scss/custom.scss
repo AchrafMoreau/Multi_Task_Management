@@ -79,3 +79,18 @@ File: Custom Css File
 .choices__list--dropdown .choices__list{
     max-height: 200px;
 }
+input.serail_number{
+  text-align: center;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  color: var(--vz-heading-color);
+  margin-inline: 6px;
+  background: rgba(0, 0, 0, .075);;
+  width: 50px;
+}
+input.serail_number:focus{
+  background: rgba(0, 0, 0, .075);
+  border: none;
+  outline: none;
+}

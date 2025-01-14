@@ -11,20 +11,37 @@
     var exp = document.getElementById("selectExpediteur"),
         des = document.getElementById("selectDistination"),
         ville = document.getElementById("ville-field"),
-        year = document.getElementById('yearSelect');
-        type = document.getElementById('typeSelect');
+        year = document.getElementById('yearSelect'),
+        type = document.getElementById('typeSelect'),
+        model = document.getElementById("selectCarModel"),
+        car = document.getElementById("selectCarNumber"),
+        carSite = document.getElementById("selectSite"),
+        driver = document.getElementById("selectDriver"),
+        monthSelect = document.getElementById("monthSelect");
+
+
 
     if(year){
-        new Choices(year, {
+        var yearVal = new Choices(year, {
             searchEnabled: false,
             itemSelectText: '',
             shouldSort: false,
         })
+    }
+    if(type){
         new Choices(type, {
             searchEnabled: false,
             itemSelectText: '',
             shouldSort: false,
-        })
+        });
+    }
+    if(monthSelect){
+        var monthVal = new Choices(monthSelect, {
+            searchEnabled: false,
+            itemSelectText: '',
+            shouldSort: false,
+        });
+
     }
 
     if(exp){
@@ -34,18 +51,18 @@
     if(ville){
         var villeVal = new Choices(ville);
     }
-    // const expSelector = document.querySelector('#selectExpediteur');
-    // const desSelector = document.querySelector('#selectDistination');
-    // if(expSelector){
-    //     const expChoices = new Choices(expSelector, {
-    //         searchEnabled: true,
-    //         itemSelectText: '',
-    //     });
-    //     const desChoices = new Choices(desSelector, {
-    //         searchEnabled: true,
-    //         itemSelectText: '',
-    //     });
-    // }
+
+    if(driver){
+        var driverVal = new Choices(driver)
+    }
+    if(model){
+        var modelVal = new Choices(model),
+            carVal = new Choices(car),
+            carSiteVal = new Choices(carSite, {
+                searchEnabled: false,
+                itemSelectText: ""
+            });
+    }
 </script>
 
 <script>

@@ -56,6 +56,11 @@
                         <i class=" ri-mail-line"></i> <span>@lang('translation.mail')</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ url('/mission') }}" role="button" >
+                        <i class=" ri-todo-fill"></i> <span>@lang('translation.mission')</span>
+                    </a>
+                </li> <!-- end Dashboard Menu -->
 
                 {{-- <li class="nav-item">
                     <a class="nav-link menu-link" href="{{ url('destination') }}" role="button" >

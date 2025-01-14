@@ -81,7 +81,6 @@ class CourrireController extends Controller
             $sourcePath = storage_path('app/private/docs/temp/' . $doc->folder . '/' . $doc->filename);
             Storage::disk('public')->put($doc->filename, file_get_contents($sourcePath));
 
-            // dd($doc->filename, $req->reception_time);
             Courrire::create([
                 "object" => $req->object,
                 "type" => $req->type,
@@ -91,6 +90,7 @@ class CourrireController extends Controller
                 "reception_jour" => $req->reception_jour,
                 "reception_heure" => $req->reception_time,
                 "document" => $doc->filename, 
+                'user_id' => auth()->user()->id
             ]);
 
 
@@ -110,6 +110,7 @@ class CourrireController extends Controller
             "observation" => $req->observation,
             "reception_jour" => $req->reception_jour,
             "reception_heure" => $req->reception_time,
+            'user_id' => auth()->user()->id
         ]);
 
         $notification = array(

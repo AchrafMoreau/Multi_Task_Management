@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\ExpediteurController;
+use App\Http\Controllers\CarController;
 use App\Http\Controllers\CourrireController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\MailController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\DechargeController;
 use App\Http\Controllers\TempFileController;
 use App\Http\Controllers\EmetteurController;
+use App\Http\Controllers\MissionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
@@ -32,6 +34,9 @@ Route::middleware(['auth', 'clearNotification'])->group(function () {
     Route::delete("/courrire-deleteMany", [CourrireController::class, "deleteMany"]);
     Route::post("/courrie-filter", [CourrireController::class, "courrieFilter"]);
 
+    Route::resource("/mission", MissionController::class);
+    Route::delete("/mission-deleteMany", [MissionController::class, "deleteMany"]);
+    Route::post("/mission-filter", [MissionController::class, "filter"]);
 
     Route::resource("/mail", MailController::class);
     Route::get("/entrant-mail", [MailController::class, "entantMail"]);
@@ -65,6 +70,9 @@ Route::middleware(['auth', 'clearNotification'])->group(function () {
     Route::resource('/setting', SettingController::class);
     Route::resource('/destination', DestinationController::class);
     Route::resource('/expediteur', ExpediteurController::class);
+
+    Route::get('/cars-json', [CarController::class, 'index']);
+    Route::get('/downloadPdf/{id}', [MissionController::class, 'downloadPDF']);
 });
 
 require __DIR__.'/auth.php';

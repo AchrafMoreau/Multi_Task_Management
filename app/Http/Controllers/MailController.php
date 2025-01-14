@@ -85,6 +85,7 @@ class MailController extends Controller
                 "reception_jour" => $req->reception_jour,
                 "reception_heure" => $req->reception_time,
                 "document" => $doc->filename, 
+                'user_id' => auth()->user()->id
             ]);
 
 
@@ -102,6 +103,7 @@ class MailController extends Controller
             "observation" => $req->observation,
             "reception_jour" => $req->reception_jour,
             "reception_heure" => $req->reception_time,
+            'user_id' => auth()->user()->id
         ]);
 
         $notification = array(

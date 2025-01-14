@@ -39,7 +39,8 @@ class DestinationController extends Controller
             "adresse" => $req->adresse,
             "phone" => $req->phone,
             "ville_id" => $req->ville,
-            "email" => $req->email
+            "email" => $req->email,
+            'user_id' => auth()->user()->id
         ]);
 
 

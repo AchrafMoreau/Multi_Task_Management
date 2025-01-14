@@ -16,7 +16,7 @@ class SettingController extends Controller
     {
         //
         $regions = Region::all();
-        $setting = Setting::find(Auth::id());
+        $setting = Setting::where('user_id', Auth::id())->first();
         return view("setting.index", ["settings" => $setting, "regions" => $regions]);
 
     }
@@ -61,8 +61,6 @@ class SettingController extends Controller
         //
         $setting = Setting::where("user_id", $id)->first();
 
-        // dd($request);
-        // dd($request->input("data-sidebar"));
         if($request->theme){
             $setting->data_bs_theme = $request->input("data-bs-theme");
             $setting->data_layout_position = $request->input("data-layout-position");
@@ -75,8 +73,8 @@ class SettingController extends Controller
         $setting->save();
 
         $notification = array(
-            'message' => 'Setting Updated successfully',
-            'alert-type' => 'success',
+            'message' =>  __('translation.createdSuccess'),
+            'alert_type' => 'success',
         );
         return redirect()->back()->with($notification);
     }
