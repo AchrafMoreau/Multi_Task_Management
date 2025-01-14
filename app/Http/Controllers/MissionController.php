@@ -51,7 +51,6 @@ class MissionController extends Controller
      */
     public function store(Request $req)
     {
-        // dd($req);
         $req->validate([
             "serial_number" => "required",
             "car" => "required",
@@ -65,7 +64,6 @@ class MissionController extends Controller
 
         ]);
 
-        // dd($req->download);
         $mission = Mission::create([
             'serial_number' => $req->serial_number . "/" . date('Y'),
             'start_date' => $req->date_start,
@@ -86,7 +84,6 @@ class MissionController extends Controller
 
         if($req->download == "true"){
 
-            dd("Enter");
             $notification = array(
                 'message' =>  __('translation.createdSuccess'),
                 'alert_type' => 'success',

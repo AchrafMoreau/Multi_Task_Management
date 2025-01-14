@@ -108,17 +108,16 @@ const handelSubmit = (e, method, url) => {
         },
         success: (res) => {
             toastr[res.alert_type](res.message);
-            console.log(res)
-            // if(res.download_url){
-            //     const iframe = document.createElement('iframe');
-            //     iframe.style.display = 'none';
-            //     iframe.src = res.download_url;
-            //     document.body.appendChild(iframe);
-            //     setTimeout(() => {
-            //         window.location.href = "/mission";
-            //     }, 1000);
-            //     return;
-            // }
+            if(res.download_url){
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = res.download_url;
+                document.body.appendChild(iframe);
+                setTimeout(() => {
+                    window.location.href = "/mission";
+                }, 1000);
+                return;
+            }
             window.location.href = "/mission";
         },
         error: (e) =>{
